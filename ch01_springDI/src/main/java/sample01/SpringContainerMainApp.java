@@ -36,6 +36,7 @@ public class SpringContainerMainApp {
 		System.out.println("bean2=" + bean2);
 		System.out.println("bean3=" + bean3);
 		System.out.println("bean4=" + bean4);
+		
+		((ClassPathXmlApplicationContext)context).close();
 	}
-
 }

@@ -17,5 +17,6 @@ public class MainApp {
 		System.out.println("------------------ MainApp ----------------");
 		MemberService service = context.getBean("service", MemberService.class);
 		service.insert();
+		
 	}
 }

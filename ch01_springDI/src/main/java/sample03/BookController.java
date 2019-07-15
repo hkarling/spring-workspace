@@ -6,8 +6,7 @@ public class BookController {
 	
 	public BookController(BookDAO bookDAO, BookVO bookVO) {
 		this.bookDAO = bookDAO;
-		this.bookVO = bookVO;
-		
+		this.bookVO = bookVO;	
 	}
 	
 	public void bookinsert() {

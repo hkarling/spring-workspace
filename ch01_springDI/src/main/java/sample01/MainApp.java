@@ -2,7 +2,7 @@ package sample01;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+//import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class MainApp {
 
@@ -25,7 +25,5 @@ public class MainApp {
 
 		bean = context.getBean("eng", MessageBean.class);
 		bean.sayHello("Chamsol");
-
 	}
-
 }
