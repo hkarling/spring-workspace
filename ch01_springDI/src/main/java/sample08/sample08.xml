@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="sample08.BookDTO" id="book1" />
+	<bean class="sample08.BookDTO" id="book2" />
+	<bean class="sample08.MessageSender" id="messageSender" />
+	<bean class="sample08.EmailSender" id="emailSender" />
+	<bean class="sample08.DbUtil" id="dbUtil" />
+	<bean class="sample08.BookDAOImpl" id="bookDao" autowire="constructor" />
+	<bean class="sample08.BookServiceImpl" id="bookService" autowire="byType">
+		<constructor-arg name="bookDao" ref="bookDao" />
+	</bean>
+	<bean class="sample08.BookController" id="bookController" autowire="constructor" />
+</beans>
