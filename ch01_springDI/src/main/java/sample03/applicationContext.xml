@@ -7,7 +7,7 @@
 		<constructor-arg value="spring" />
 		<constructor-arg value="장희정" />
 		<constructor-arg value="25000" type="int" />
-		<constructor-arg value="2019-07-15" />		
+		<constructor-arg value="2019-07-15" />
 	</bean>
 	<bean class="sample03.BookDAOImpl" id="dao" />
 	<bean class="sample03.BookController" id="controller">
