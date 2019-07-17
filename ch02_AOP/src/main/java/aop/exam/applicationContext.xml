@@ -18,7 +18,8 @@
 	-->
 	<aop:config proxy-target-class="false" expose-proxy="true">
 		<aop:aspect id="aspect" ref="advice">
-			<aop:around method="around" pointcut="execution(public * aop.exam.*.*ello(..))" />
+			<aop:pointcut expression="execution(public * aop.exam.*.*ello(..))" id="pointCut"/>
+			<aop:around method="around" pointcut-ref="pointCut" />
 		</aop:aspect>
 	</aop:config>
 </beans>
