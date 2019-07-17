@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 객체생성 -->
+	<bean class="aop.exam.MessageServiceImpl" id="target" />
+	<bean class="aop.exam.UserService" id="target2" />
+
+	<bean class="aop.exam.TimerAdvice" id="advice" />
+	
+	<!--
+		AOP설정: xml기반으로 설정
+		proxy-target-class="true"설정시 CGLIB기반으로 생성
+		expose-proxy는 AopContext.currentProxy()를 호출하기 위해 반드시 true로 해주어야한다.
+	-->
+	<aop:config proxy-target-class="false" expose-proxy="true">
+		<aop:aspect id="aspect" ref="advice">
+			<aop:around method="around" pointcut="execution(public * aop.exam.*.*ello(..))" />
+		</aop:aspect>
+	</aop:config>
+</beans>
