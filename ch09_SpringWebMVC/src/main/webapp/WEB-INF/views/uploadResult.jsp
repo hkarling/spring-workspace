@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,6 @@
 ${name}<br>
 ${fileName}<br>
 ${path}<br>
-${fileSize}<br>
+<fmt:formatNumber value="${fileSize}"/><br>
 </body>
 </html>

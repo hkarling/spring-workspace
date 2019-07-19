@@ -24,10 +24,11 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1" />
 	</beans:bean>
 
 	<context:component-scan
-		base-package="project.mvc.controller" />
+		base-package="project.mvc.controller, project.mvc.down" />
 
 
 	<!-- 각 예외별 page 설정 (모든 Controller가 공유) -->
@@ -42,5 +43,6 @@
 		</beans:property>
 	</beans:bean>
 
-	<!-- <beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver" /> -->
+	<!-- <beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver" 
+		/> -->
 </beans:beans>
