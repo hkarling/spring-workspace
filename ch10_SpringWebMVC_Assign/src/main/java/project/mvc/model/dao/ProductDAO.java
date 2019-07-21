@@ -21,13 +21,3 @@ public interface ProductDAO {
 	 * */
 	 int delete(String code)throws MyErrorException;
 }
-
-
-
-
-
-
-
-
-
-

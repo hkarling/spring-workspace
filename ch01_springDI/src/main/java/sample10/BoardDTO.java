@@ -15,7 +15,6 @@ public class BoardDTO {
 	private String content;
 	
 	public BoardDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public BoardDTO(int no, String subject, String content) {

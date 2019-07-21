@@ -7,8 +7,6 @@ public class BoardMyBatisDAOImpl implements BoardDAO {
 
 	@Override
 	public void select() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

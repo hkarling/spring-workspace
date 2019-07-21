@@ -1,29 +1,30 @@
-package project.mvc.model.dao;
+package project.mvc.model.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import project.mvc.model.dao.ProductDAO;
+import project.mvc.model.dao.ProductDAOImpl;
 import project.mvc.model.dto.ProductDTO;
 import project.mvc.model.exception.MyErrorException;
 
-@Repository
-public class ProductDAOImpl implements ProductDAO {
-	
+@Service
+public class ProductServiceImpl implements ProductService {
+
 	@Autowired
-	List<ProductDTO> list;
+	ProductDAO dao;
 	
 	@Override
 	public List<ProductDTO> select() {
-		
-		return list;
+
+		return dao.select();
 	}
 
 	@Override
 	public int insert(ProductDTO productDTO) throws MyErrorException {
-
+		
 		return 0;
 	}
 
@@ -32,5 +33,4 @@ public class ProductDAOImpl implements ProductDAO {
 
 		return 0;
 	}
-
 }
