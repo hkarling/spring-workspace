@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.mvc.model.dao.ProductDAO;
-import project.mvc.model.dao.ProductDAOImpl;
 import project.mvc.model.dto.ProductDTO;
 import project.mvc.model.exception.MyErrorException;
 
@@ -24,13 +23,14 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public int insert(ProductDTO productDTO) throws MyErrorException {
-		
-		return 0;
+		if(productDTO.getPrice() < 1000 || productDTO.getPrice() > 10000)
+			throw new MyErrorException("가격범위 초과(1000 - 10000)");
+		return dao.insert(productDTO);
 	}
 
 	@Override
 	public int delete(String code) throws MyErrorException {
 
-		return 0;
+		return dao.delete(code);
 	}
 }

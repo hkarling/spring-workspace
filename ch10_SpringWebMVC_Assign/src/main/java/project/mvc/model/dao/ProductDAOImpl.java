@@ -29,13 +29,19 @@ public class ProductDAOImpl implements ProductDAO {
 				throw new MyErrorException("상품코드 중복");
 		}
 		
-		return 0;
+		list.add(productDTO);
+		
+		return 1;
 	}
 
 	@Override
 	public int delete(String code) throws MyErrorException {
-
-		return 0;
+		for(ProductDTO obj : list) {
+			if(obj.getCode().equals(code)) {
+				list.remove(obj);
+				return 1;
+			}
+		}
+		throw new MyErrorException("코드에 해당하는 상품이 존재하지 않음.");
 	}
-
 }

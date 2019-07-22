@@ -7,31 +7,31 @@
 	<bean class="project.mvc.model.dto.ProductDTO" id="p1">
 		<property name="code" value="A1" />
 		<property name="name" value="가가가" />
-		<property name="price" value="11111" />
+		<property name="price" value="6000" />
 		<property name="detail" value="가아아아아" />
 	</bean>
 	<bean class="project.mvc.model.dto.ProductDTO" id="p2">
 		<property name="code" value="A2" />
 		<property name="name" value="나나나" />
-		<property name="price" value="22222" />
+		<property name="price" value="7000" />
 		<property name="detail" value="나아아아아" />
 	</bean>
 	<bean class="project.mvc.model.dto.ProductDTO" id="p3">
 		<property name="code" value="A3" />
 		<property name="name" value="다다다" />
-		<property name="price" value="33333" />
+		<property name="price" value="8000" />
 		<property name="detail" value="다아아아아" />
 	</bean>
 	<bean class="project.mvc.model.dto.ProductDTO" id="p4">
 		<property name="code" value="A4" />
 		<property name="name" value="라라라" />
-		<property name="price" value="44444" />
+		<property name="price" value="9000" />
 		<property name="detail" value="라아아아아" />
 	</bean>
 	<bean class="project.mvc.model.dto.ProductDTO" id="p5">
 		<property name="code" value="A5" />
 		<property name="name" value="마마마" />
-		<property name="price" value="55555" />
+		<property name="price" value="4000" />
 		<property name="detail" value="마아아아아" />
 	</bean>
 </beans>

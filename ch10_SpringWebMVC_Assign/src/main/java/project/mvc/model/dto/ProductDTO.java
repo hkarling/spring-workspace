@@ -1,8 +1,5 @@
 package project.mvc.model.dto;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 public class ProductDTO {
 	private String code;
 	private String name;
