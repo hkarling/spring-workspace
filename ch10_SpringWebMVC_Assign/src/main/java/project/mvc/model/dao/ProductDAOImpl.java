@@ -24,6 +24,11 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public int insert(ProductDTO productDTO) throws MyErrorException {
 
+		for(ProductDTO obj : list) {
+			if(obj.getCode().equals(productDTO.getCode()))
+				throw new MyErrorException("상품코드 중복");
+		}
+		
 		return 0;
 	}
 

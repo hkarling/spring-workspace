@@ -31,6 +31,7 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.kosta</url-pattern>
+		<url-pattern>*.ko</url-pattern>
 	</servlet-mapping>
 
 </web-app>

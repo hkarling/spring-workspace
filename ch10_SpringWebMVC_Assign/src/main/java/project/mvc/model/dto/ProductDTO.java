@@ -3,8 +3,6 @@ package project.mvc.model.dto;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
-@Scope("prototype")
 public class ProductDTO {
 	private String code;
 	private String name;
