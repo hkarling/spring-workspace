@@ -7,17 +7,17 @@ import project.mvc.model.exception.MyErrorException;
 
 public interface ProductService {
 	/**
-	    * 검색
-	    * */
-		List<ProductDTO> select();
-		
-		/**
-		 * 등록
-		 * */
-		int insert(ProductDTO productDTO)throws MyErrorException;
-		
-		/**
-		 * 삭제
-		 * */
-		 int delete(String code)throws MyErrorException;
+	 * 검색
+	 */
+	List<ProductDTO> select();
+
+	/**
+	 * 등록
+	 */
+	int insert(ProductDTO productDTO) throws MyErrorException;
+
+	/**
+	 * 삭제
+	 */
+	int delete(String code) throws MyErrorException;
 }

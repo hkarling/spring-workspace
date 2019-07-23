@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,15 +22,11 @@ a {
 	text-decoration: none;
 }
 </style>
-
-${pageContext.request.contextPath}
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
-
-
-
 </head>
 <body>
+	${pageContext.request.contextPath}
 	<table>
 		<caption>
 			<h1>[ Product List Page ]</h1>
@@ -56,13 +52,6 @@ ${pageContext.request.contextPath}
 		<tr>
 			<th colspan="6"><a href="insertForm.ko">상품등록하기</a></th>
 		</tr>
-
 	</table>
-
-
 </body>
-
-
-
-
 </html>

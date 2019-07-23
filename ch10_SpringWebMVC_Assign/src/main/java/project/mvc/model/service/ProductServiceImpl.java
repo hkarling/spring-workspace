@@ -14,7 +14,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductDAO dao;
-	
+
 	@Override
 	public List<ProductDTO> select() {
 
@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public int insert(ProductDTO productDTO) throws MyErrorException {
-		if(productDTO.getPrice() < 1000 || productDTO.getPrice() > 10000)
+		if (productDTO.getPrice() < 1000 || productDTO.getPrice() > 10000)
 			throw new MyErrorException("가격범위 초과(1000 - 10000)");
 		return dao.insert(productDTO);
 	}

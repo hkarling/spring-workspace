@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>
-		<a href="start.kosta">상품 리스트</a>
-	</h1>
+
+<h1>Admin 왔어여어</h1>
 </body>
 </html>

@@ -8,7 +8,7 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver" /> <!--  이거 id는 정해져있다!!!!!!!! -->
 		
-	<!-- 다운로드를 위한 ViewResolver 설 -->
+	<!-- 다운로드를 위한 ViewResolver 설정 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="0" />
 	</bean>
