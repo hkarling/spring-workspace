@@ -27,7 +27,7 @@ public class ProductController {
 	@RequestMapping("{code}")
 	public String delete(@PathVariable String code) {
 		service.delete(code);
-		return "redirect:start.kosta";
+		return "redirect:/start.kosta";
 	}
 //	@RequestMapping("/delete.kosta")
 //	public String delete(HttpServletRequest request) {
@@ -40,7 +40,7 @@ public class ProductController {
 	@RequestMapping("/insert.ko")
 	public String insert(ProductDTO productDTO) {
 		service.insert(productDTO);
-		return "redirect:start.kosta";
+		return "redirect:/start.kosta";
 	}
 
 	@RequestMapping({"/{url}.ko", "{url}.kosta"})
