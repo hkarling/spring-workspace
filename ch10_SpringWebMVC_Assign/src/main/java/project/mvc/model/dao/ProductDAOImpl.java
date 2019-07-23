@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import project.mvc.model.dto.ProductDTO;
 import project.mvc.model.exception.MyErrorException;
 
-@Repository
+@Repository // id="productDAOImpl"
 public class ProductDAOImpl implements ProductDAO {
 	
 	@Autowired
@@ -16,20 +16,16 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	@Override
 	public List<ProductDTO> select() {
-		
 		return list;
 	}
 
 	@Override
 	public int insert(ProductDTO productDTO) throws MyErrorException {
-
 		for(ProductDTO obj : list) {
 			if(obj.getCode().equals(productDTO.getCode()))
 				throw new MyErrorException("상품코드 중복");
 		}
-		
 		list.add(productDTO);
-		
 		return 1;
 	}
 

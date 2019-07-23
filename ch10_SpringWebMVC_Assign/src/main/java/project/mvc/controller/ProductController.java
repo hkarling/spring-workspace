@@ -1,10 +1,9 @@
 package project.mvc.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,42 +16,45 @@ public class ProductController {
 
 	@Autowired
 	ProductService service;
-	
+
 	@RequestMapping("/start.kosta")
 	public ModelAndView select() {
 		ModelAndView mv = new ModelAndView("productList");
 		mv.addObject("list", service.select());
-		
 		return mv;
 	}
-	
-	@RequestMapping("/delete.kosta")
-	public ModelAndView delete(HttpServletRequest request) {
-		String code = request.getParameter("code");
+
+	@RequestMapping("{code}")
+	public String delete(@PathVariable String code) {
 		service.delete(code);
-		
-		return this.select();
+		return "redirect:start.kosta";
 	}
-	
-	@RequestMapping("/insertForm.ko")
-	public String toInsertForm() {
-		
-		return "insertForm";
-	}
-	
+//	@RequestMapping("/delete.kosta")
+//	public String delete(HttpServletRequest request) {
+//		String code = request.getParameter("code");
+//		service.delete(code);
+//		return "redirect:start.kosta";
+//		// 전송해야될 데이터가 있다면 forward로 보낸다.
+//	}
+
 	@RequestMapping("/insert.ko")
-	public ModelAndView insert(ProductDTO productDTO) {
+	public String insert(ProductDTO productDTO) {
 		service.insert(productDTO);
-		
-		return this.select();
+		return "redirect:start.kosta";
 	}
-	
+
+	@RequestMapping({"/{url}.ko", "{url}.kosta"})
+	public void url() {
+	}
+//	@RequestMapping("/insertForm.ko")
+//	public String toInsertForm() {	
+//		return "insertForm";
+//	}
+
 	@ExceptionHandler(MyErrorException.class)
 	public ModelAndView myErrorExceptionHandler(Exception e) {
-		
 		ModelAndView mv = new ModelAndView("error");
 		mv.addObject("errMessage", e.getMessage());
-		
 		return mv;
 	}
 }

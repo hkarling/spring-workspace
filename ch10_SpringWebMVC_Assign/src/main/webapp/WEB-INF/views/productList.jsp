@@ -22,8 +22,13 @@ a {
 	text-decoration: none;
 }
 </style>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script>
+	$(document).on("click", "a[name=del]", function() {
+		var str = $(this).parent().parent().find("#code").text();
+		location.href = "${pageContext.request.contextPath}/del/" + str;
+	});
+</script>
 </head>
 <body>
 	${pageContext.request.contextPath}
@@ -39,16 +44,25 @@ a {
 			<th>상품설명</th>
 			<th>삭제하기</th>
 		</tr>
-		<c:forEach items="${list}" var="item" varStatus="state">
-			<tr>
-				<th>${state.count}</th>
-				<th>${item.code}</th>
-				<th>${item.name}</th>
-				<th>${item.price}</th>
-				<th>${item.detail}</th>
-				<th><a href="delete.kosta?code=${item.code}">삭제하기</a></th>
-			</tr>
-		</c:forEach>
+		<c:choose>
+			<c:when test="${list.size() == 0}">
+				<tr>
+					<th colspan="6">등록된 상품이 없습니다.</th>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${list}" var="item" varStatus="state">
+					<tr>
+						<th>${state.count}</th>
+						<th id="code">${item.code}</th>
+						<th>${item.name}</th>
+						<th>${item.price}</th>
+						<th>${item.detail}</th>
+						<th><a name="del" href="#">삭제하기</a></th>
+					</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 		<tr>
 			<th colspan="6"><a href="insertForm.ko">상품등록하기</a></th>
 		</tr>

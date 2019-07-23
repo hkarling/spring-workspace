@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>오류 : ${errMessage}</h1>
-	<a href="start.kosta">이동하기</a>
+	<a href="start.kosta">홈으로</a>
+	<a href="javascript:history.back()">뒤로가기</a>
 </body>
 </html>
