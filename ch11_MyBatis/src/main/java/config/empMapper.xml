@@ -5,29 +5,39 @@
 	<select id="selectName" resultType="string">
 		select ename from emp
 	</select>
-	<select id="selectAll" resultType="EmpDTO" >
+	<select id="selectAll" resultType="EmpDTO">
 		select empno, ename as name, job, sal from emp
 		<!-- ename을 dto에서 name에다가 넣기 위해 별칭을 준다. -->
 	</select>
-	
+
 	<!-- 등록하기 -->
 	<insert id="empInsert" parameterType="EmpDTO"> <!-- parameterMap은 deprecated되어 사용하지 않는다. -->
-		insert into emp(empno, ename, job, sal, hiredate) values(#{empNo},#{name},#{job},#{sal},sysdate)
+		insert into emp(empno, ename, job, sal, hiredate)
+		values(#{empNo},#{name},#{job},#{sal},sysdate)
 	</insert>
-	
+
 	<!-- 삭제하기 -->
 	<delete id="empDelete" parameterType="int">
 		delete from emp where empno=#{_parameter}
 		<!-- 파라메터가 한 개일 경우 아무 이름이나 써도 되나, _parameter가 보통 쓰인다. -->
 	</delete>
-	
+
 	<!-- 수정하기 -->
 	<update id="empUpdate" parameterType="EmpDTO">
-		update emp set ename=#{name}, job=#{job}, sal=#{sal} where empno=#{empno}
+		update emp set
+		ename=#{name}, job=#{job}, sal=#{sal} where empno=#{empno}
 	</update>
-	
+
 	<!-- job에 해당하는 사원들의 ename, job, sal 수정 (job이 두 개) -->
 	<update id="updateByJob" parameterType="map">
-		update emp set ename=#{dto.name}, job=#{dto.job}, sal=#{dto.sal} where upper(job)=upper(#{job})
+		update emp set
+		ename=#{dto.name}, job=#{dto.job}, sal=#{dto.sal} where
+		upper(job)=upper(#{job})
 	</update>
+
+	<!-- 어떤 컬럼에 특정단어가 포함된 레코드 -->
+	<select id="searchByFieldName" parameterType="map" resultMap="empSelectMapper.selectMap">
+		<include refid="empSelectMapper.empSelectSql" />
+		where ${keyField} like '%' || #{keyword} || '%'
+	</select>
 </mapper>

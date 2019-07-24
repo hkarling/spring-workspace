@@ -168,7 +168,7 @@ public class EmpDAO {
 			DbUtil.sessionClose(session, state);
 		}
 	}
-	
+
 	/**
 	 * 특정 컬럼을 기준으로 정렬하기
 	 */
@@ -178,6 +178,26 @@ public class EmpDAO {
 		try {
 			session = DbUtil.getSqlSession();
 			List<EmpDTO> list = session.selectList("empSelectMapper.selectByOrder", column);
+			for (EmpDTO dto : list) {
+				System.out.println(dto);
+			}
+		} finally {
+			DbUtil.sessionClose(session, state);
+		}
+	}
+
+	/**
+	 * 어떤 컬럼에 특정단어가 포함된 레코드
+	 */
+	public void selectByKeyField(String keyField, String keyword) {
+		SqlSession session = null;
+		boolean state = false;
+		try {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("keyField", keyField);
+			map.put("keyword", keyword);
+			session = DbUtil.getSqlSession();
+			List<EmpDTO> list = session.selectList("empMapper.searchByFieldName", map);
 			for (EmpDTO dto : list) {
 				System.out.println(dto);
 			}

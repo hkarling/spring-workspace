@@ -26,9 +26,11 @@ public class MainApp {
 //		dao.empSelectByempno(7369);
 //		System.out.println("----- 범위 검색 -----");
 //		dao.empSelectBySal(3000, 10000);
-		System.out.println("----- sal 얼마 이하 검색 -----");
-		dao.empSelectBySal2(3000);
-		System.out.println("----- 컬럼명으로 정렬 -----");
-		dao.empSelectByOrder("sal");
+//		System.out.println("----- sal 얼마 이하 검색 -----");
+//		dao.empSelectBySal2(3000);
+//		System.out.println("----- 컬럼명으로 정렬 -----");
+//		dao.empSelectByOrder("sal");
+		System.out.println("----- 특정 컬럼, 특정 단어로 정렬 -----");
+		dao.selectByKeyField("job", "MAN");
 	}
 }
