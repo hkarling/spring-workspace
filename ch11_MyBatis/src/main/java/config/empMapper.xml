@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- mapper doctype : mybatis 문서에서 가져온다. -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="empMapper">
 	<select id="selectName" resultType="string">
 		select ename from emp
 	</select>
-	<select id="selectAll" resultType="EmpDTO">
-		select empno, ename as name, job, sal from emp <!-- ename을 dto에서 name에다가 넣기 위해 별칭을 준다. -->
+	<select id="selectAll" resultType="EmpDTO" >
+		select empno, ename as name, job, sal from emp
+		<!-- ename을 dto에서 name에다가 넣기 위해 별칭을 준다. -->
 	</select>
+	
+	<!-- 등록하기 -->
+	<insert id="empInsert" parameterType="EmpDTO"> <!-- parameterMap은 deprecated되어 사용하지 않는다. -->
+		insert into emp(empno, ename, job, sal, hiredate) values(#{empNo},#{name},#{job},#{sal},sysdate)
+	</insert>
+	
+	<!-- 삭제하기 -->
+	<delete id="empDelete" parameterType="int">
+		delete from emp where empno=#{_parameter}
+		<!-- 파라메터가 한 개일 경우 아무 이름이나 써도 되나, _parameter가 보통 쓰인다. -->
+	</delete>
+	
+	<!-- 수정하기 -->
+	<update id="empUpdate" parameterType="EmpDTO">
+		update emp set ename=#{name}, job=#{job}, sal=#{sal} where empno=#{empno}
+	</update>	
 </mapper>

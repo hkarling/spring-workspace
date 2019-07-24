@@ -6,6 +6,17 @@ public class EmpDTO {
 	private String job;
 	private int sal;
 
+	public EmpDTO() {
+
+	}
+	
+	public EmpDTO(int empNo, String name, String job, int sal) {
+		this.empNo = empNo;
+		this.name = name;
+		this.job = job;
+		this.sal = sal;
+	}
+
 	public int getEmpNo() {
 		return empNo;
 	}

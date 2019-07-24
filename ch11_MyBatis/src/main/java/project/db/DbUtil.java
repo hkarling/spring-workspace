@@ -49,15 +49,8 @@ public class DbUtil {
 	}
 
 	/* 닫기(select인 경우) */
-	public static void sessionClose(ResultSet rs, SqlSession session, boolean state) {
-		if (rs != null) {
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		sessionClose(session, state);
+	public static void sessionClose(SqlSession session) {
+		if (session != null)
+			session.close();
 	}
 }
