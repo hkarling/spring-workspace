@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 외부 properties -->
+	<properties resource="config/dbInfo.properties" />
+	
+	<!-- 자료형 type의 별칭 만들기 -->
+	<typeAliases>
+		<typeAlias type="project.dto.EmpDTO" alias="EmpDTO" />
+	</typeAliases>
+	
+	<!-- Environments -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="UNPOOLED"> <!-- UNPOOLED | POOLED : WEB이 아닌이상 UNPOOLED 써도 된다. -->
+				<property name="driver" value="${driverName}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${userName}" />
+				<property name="password" value="${userPass}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- Mapper -->
+	<mappers>
+		<mapper resource="config/empMapper.xml" />
+	</mappers>
+</configuration>
