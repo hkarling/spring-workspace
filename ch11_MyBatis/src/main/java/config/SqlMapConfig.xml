@@ -2,14 +2,20 @@
 <!-- config doctype: mybatis 문서에서 가져온다. -->
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
 	<!-- 외부 properties -->
 	<properties resource="config/dbInfo.properties" />
-	
+
+	<!-- #{이름}에 대항하는 값이 null을 허용할 수 있도록 설정 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
 	<!-- 자료형 type의 별칭 만들기 -->
 	<typeAliases>
 		<typeAlias type="project.dto.EmpDTO" alias="EmpDTO" />
 	</typeAliases>
-	
+
 	<!-- Environments -->
 	<environments default="development">
 		<environment id="development">
@@ -22,8 +28,10 @@
 			</dataSource>
 		</environment>
 	</environments>
+
 	<!-- Mapper -->
 	<mappers>
 		<mapper resource="config/empMapper.xml" />
+		<mapper resource="config/empSelectMapper.xml" />
 	</mappers>
 </configuration>

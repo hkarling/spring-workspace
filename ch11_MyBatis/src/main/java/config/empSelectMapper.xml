@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mapper doctype : mybatis 문서에서 가져온다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="empSelectMapper">
+
+	<!-- 자주 사용되는 반복쿼리들을 미리 선언하고 참조해서 사용한다. -->
+	<sql id="empSelectSql">
+		select empno, ename, job, sal from emp
+	</sql>
+
+	<!-- DB의 필드와 DTO의 properties 매칭하기 -->
+	<resultMap type="empDTO" id="selectMap">
+		<id column="empno" property="empNo" />
+		<result column="ename" property="name" />
+		<result column="job" property="job" />
+		<result column="sal" property="sal" />
+	</resultMap>
+
+	<!-- 전체 검색 -->
+	<select id="selectAll" resultMap="selectMap">
+		<include refid="empSelectSql" />
+	</select>
+
+	<!-- 사원번호에 해당하는 레코드 검색 -->
+	<select id="selectByEmpNo" parameterType="int"
+		resultMap="selectMap">
+		<include refid="empSelectSql" />
+		where empno= #{_parameter}
+	</select>
+
+	<!-- 조건 검색 -->
+	<select id="selectBySal" parameterType="map"
+		resultMap="selectMap">
+		<include refid="empSelectSql" />
+		where sal between #{min} and #{max}
+	</select>
+
+	<!-- 급여보다 더 적게 받는 사원 검색 -->
+	<select id="selectBySal2" parameterType="int"
+		resultMap="selectMap">
+		select empno, ename, job, sal from emp where sal &lt;=
+		#{_parameter}
+	</select>
+
+	<!-- 특정 컬럼을 기준으로 정렬하기 -->
+	<select id="selectByOrder" parameterType="string"
+		resultMap="selectMap">
+		select empno, ename, job, sal from emp order by ${_parameter}
+		<!-- $와 #의 차이 : $는 statement형식 #은 preparedStatement형식 -->
+	</select>
+</mapper>

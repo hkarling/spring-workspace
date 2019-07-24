@@ -24,5 +24,10 @@
 	<!-- 수정하기 -->
 	<update id="empUpdate" parameterType="EmpDTO">
 		update emp set ename=#{name}, job=#{job}, sal=#{sal} where empno=#{empno}
-	</update>	
+	</update>
+	
+	<!-- job에 해당하는 사원들의 ename, job, sal 수정 (job이 두 개) -->
+	<update id="updateByJob" parameterType="map">
+		update emp set ename=#{dto.name}, job=#{dto.job}, sal=#{dto.sal} where upper(job)=upper(#{job})
+	</update>
 </mapper>
