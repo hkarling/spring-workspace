@@ -7,14 +7,15 @@
 		<result column="p_qty" property="quantity" />
 		<result column="p_price" property="price" />
 		<result column="p_detail" property="detail" />
+		<!-- <constructor> <idArg column="" /> <arg/> </constructor> -->
 	</resultMap>
-
+	<!-- [1]번 레코드 삽입 -->
 	<insert id="insertDTO" parameterType="productDTO">
 		insert into
 		productlist
 		values(#{code},#{name},#{quantity},#{price},#{detail})
 	</insert>
-
+	<!-- [2]번 모든레코드 검색 또는 조건별 검색 -->
 	<select id="selectProduct" parameterType="map"
 		resultMap="selectMap">
 		select * from productlist
@@ -25,7 +26,7 @@
 			<if test="order!=null">${order}</if>
 		</trim>
 	</select>
-
+	<!-- [3]번 문제 -->
 	<update id="updateProduct" parameterType="productDTO">
 		update productlist
 		<set>
@@ -36,22 +37,22 @@
 		</set>
 		where p_code=#{code}
 	</update>
-
+	<!-- [4]번 문제 -->
 	<delete id="deleteProduct" parameterType="string">
 		delete productlist
 		where p_code=#{_parameter}
 	</delete>
-
+	<!-- [5]번 문제 -->
 	<select id="countProduct" resultType="int">
 		select sum(p_qty) from
 		productlist
 	</select>
-	
+	<!-- [6]번 문제 -->
 	<select id="selectByCode" parameterType="list" resultMap="selectMap">
 		select * from productlist
 		<where>
 			p_code in
-			<foreach item="item" collection="list" open="(" separator="," close=")">
+			<foreach item="item" collection="array" open="(" separator="," close=")">
 				#{item}
 			</foreach>
 		</where>

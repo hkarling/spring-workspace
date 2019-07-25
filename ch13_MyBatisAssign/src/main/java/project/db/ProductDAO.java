@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import project.dto.ProductDTO;
 
 public class ProductDAO {
-//	[1]. 레코드 삽입
+	/** [1] 레코드 삽입 */
 	public void insert(ProductDTO dto) {
 		SqlSession session = null;
 		boolean state = false;
@@ -21,10 +21,7 @@ public class ProductDAO {
 		}
 	}
 	
-//		[2]. ex) select * from productList
-//	 ex) select * from productList where 검색필드 like  검색단어
-//	 ex) select * from productList order by 정렬대상
-//	 ex) select * from productList where 검색필드 like  검색단어  order by 정렬대상
+	/** [2] 모든레코드 검색 또는 조건별 검색 */
 	public void select() {
 		this.select(null, null, null);
 	}
@@ -96,7 +93,8 @@ public class ProductDAO {
 		
 		try {
 			session = DbUtil.getSqlSession();
-			List<ProductDTO> list = session.selectList("productMapper.selectByCode", codes);
+			//List<ProductDTO> list = session.selectList("productMapper.selectByCode", codes);
+			List<ProductDTO> list = session.selectList("productMapper.selectByCode", new String[] {"A01","A02"});
 
 			for (ProductDTO dto : list) {
 				System.out.println(dto);
