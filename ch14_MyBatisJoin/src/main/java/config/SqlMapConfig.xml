@@ -8,7 +8,9 @@
 	
 	<!-- 자료형 type의 별칭 만들기 : 보통 클래스 첫글자를 소문자로 하고 그대로 쓴다. -->
 	<typeAliases>
-		<typeAlias type="project.dto.ProductDTO" alias="productDTO" />
+		<typeAlias type="project.dto.CommentbDTO" alias="commentbDTO" />
+		<typeAlias type="project.dto.UsersDTO" alias="usersDTO" />
+		<typeAlias type="project.dto.ReplyDTO" alias="replyDTO" />
 	</typeAliases>
 
 	<!-- Environments -->
@@ -26,6 +28,6 @@
 
 	<!-- Mapper -->
 	<mappers>
-		<mapper resource="config/productMapper.xml" />
+		<mapper resource="config/joinMapper.xml" />
 	</mappers>
 </configuration>

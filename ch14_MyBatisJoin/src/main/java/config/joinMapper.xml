@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="joinMapper">
+
+	<!-- 1:1인 경우 resultMap 세팅하기 -->
+	<resultMap type="commentbDTO" id="associationMap">
+		<id column="comment_no" property="commentNo" />
+		<result column="comment_content" property="commentContent" />
+		<result column="reg_date" property="regDate" />
+		<association property="user" javaType="usersDTO">
+			<id column="user_id" property="userId" />
+			<result column="user_name" property="userName" />
+		</association>
+	</resultMap>
+
+	<!-- 1:다인 경우 resultMap 세팅하기 -->
+	<resultMap type="commentbDTO" id="collectionMap">
+		<id column="comment_no" property="commentNo" />
+		<result column="user_id" property="userId" />
+		<result column="comment_content" property="commentContent" />
+		<collection property="replies" ofType="replyDTO">
+			<id column="reply_no" property="replyNo"/>
+			<result column="reply_content" property="replyContent"/>
+			<result column="reg_date" property="regDate"/>
+		</collection>
+	</resultMap>
+
+	<!-- 1:1의 관계 문제[1] 한 개의 comment는 한 명의 작성자 정보를 가진다. -->
+	<select id="associationJoin" resultMap="associationMap">
+		SELECT c.comment_No, c.user_id, u.user_name, c.comment_Content, c.reg_Date
+		FROM commentb c
+		JOIN users u
+		ON c.user_id = u.user_id
+	</select>
+
+
+	<!-- 1:다의 관계 문제[2] 한개의 Comment는 여러명의 유저가 답글을 달 수 있다. -->
+	<select id="collectionJoin" resultMap="collectionMap">
+		SELECT c.comment_no, c.user_id, c.comment_Content, r.reply_no, r.reply_content, r.reg_date
+		FROM commentB c JOIN reply r
+		ON c.comment_no = r.comment_no
+	</select>
+</mapper>
