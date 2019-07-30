@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<link rel="stylesheet" href="css/style.css">
-
 <table align="center" border="0" cellpadding="5" cellspacing="2" width="100%" bordercolordark="white" bordercolorlight="black">
 <caption>상품 LIST</caption>
 	<colgroup>
@@ -58,7 +56,7 @@
 		        </td>
 		        <td bgcolor="">
 					<p><span style="font-size:9pt;">
-					<a href="elec?command=detailView&modelNum=${elecDto.modelNum}">
+					<a href="${pageContext.request.contextPath}/board/read/${elecDto.modelNum}">
 					  ${elecDto.modelName}
 					</a>
 					</span></p>
@@ -75,11 +73,11 @@
 		         
 		         <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
-		            ${elecDto.fName}</span></p>
+		            ${elecDto.fname}</span></p>
 		        </td>
 		         <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
-		            <fmt:formatNumber value="${elecDto.fSize}"/> byte</span></p>
+		            <fmt:formatNumber value="${elecDto.fsize}"/> byte</span></p>
 		        </td>
 		        <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
@@ -92,7 +90,7 @@
 </table>
 <hr>
 <div align=right>
-<span style="font-size:9pt;">&lt;<a href="elecView/write.html">글쓰기</a>&gt;</span></div>
+<span style="font-size:9pt;">&lt;<a href="${pageContext.request.contextPath}/board/write">글쓰기</a>&gt;</span></div>
 
 
 

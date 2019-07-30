@@ -1,6 +1,8 @@
 package project.mvc.model.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,38 +18,35 @@ public class BoardDAOImpl implements BoardDAO {
     
     @Override
     public List<ElectronicsDTO> selectAll() {
-	// TODO Auto-generated method stub
-	return null;
+	List<ElectronicsDTO> list = session.selectList("boardMapper.selectAll");
+	return list;
     }
 
     @Override
     public ElectronicsDTO selectByModelNum(String modelNum) {
-	// TODO Auto-generated method stub
-	return null;
+	return session.selectOne("boardMapper.selectAll", modelNum);
     }
 
     @Override
     public int readnumUpdate(String modelNum) {
-	// TODO Auto-generated method stub
-	return 0;
+	return session.update("boardMapper.readnumUpdate", modelNum);
     }
 
     @Override
     public int insert(ElectronicsDTO electronics) {
-	// TODO Auto-generated method stub
-	return 0;
+	return session.insert("boardMapper.boardInsert", electronics);
     }
 
     @Override
     public int delete(String modelNum, String password) {
-	// TODO Auto-generated method stub
-	return 0;
+	Map<String, String> map = new HashMap<String, String>();
+	map.put("modelNum", modelNum);
+	map.put("password", password);
+	return session.insert("boardMapper.delete", map);
     }
 
     @Override
     public int update(ElectronicsDTO electronics) {
-	// TODO Auto-generated method stub
-	return 0;
+	return session.insert("boardMapper.update", electronics);
     }
-
 }

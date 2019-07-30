@@ -44,7 +44,7 @@
 	</beans:bean>
 
 	<!-- 각 예외별 page 설정 (모든 Controller가 공유) -->
-	<beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+ 	<beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<beans:property name="exceptionMappings">
 			<beans:props>
 				<beans:prop key="java.lang.Exception">

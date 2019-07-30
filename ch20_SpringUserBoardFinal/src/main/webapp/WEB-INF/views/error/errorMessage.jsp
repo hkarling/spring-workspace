@@ -30,8 +30,9 @@
 		<br />
 		<div class="col-lg-6  col-lg-offset-3">
 			<div class="btn-group btn-group-justified">
-				<a href="<c:url value="/user/login"/>" class="btn btn-primary">Login</a>
-				<a href="<c:url value="/index.jsp"/>" class="btn btn-success">Return Website</a>
+				<a href="${pageContext.request.contextPath}/user/login" class="btn btn-primary btn-sm">Login</a>
+				<a href="${pageContext.request.contextPath}" class="btn btn-success btn-sm">Return Website</a>
+				<a href="javascript:history.back()" class="btn btn-danger btn-sm">Back</a>
 			</div>
 
 		</div>

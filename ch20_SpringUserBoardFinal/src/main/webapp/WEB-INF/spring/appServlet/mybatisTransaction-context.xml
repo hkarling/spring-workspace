@@ -26,7 +26,7 @@
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="mapperLocations" value="classpath:mapper/*Mapper.xml" />
-		<beans:property name="typeAliasesPackage" value="project.mvc.model.user.dto, project.mvc.board.dto" />
+		<beans:property name="typeAliasesPackage" value="project.mvc.model.user.dto, project.mvc.model.board.dto" />
 		<beans:property name="configLocation" value="classpath:SqlMapConfig.xml" />
 	</beans:bean>
 

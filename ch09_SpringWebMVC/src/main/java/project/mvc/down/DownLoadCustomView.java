@@ -28,7 +28,6 @@ public class DownLoadCustomView extends AbstractView{
 		
 		response.setContentType("application/download;charset-UTF-8");
 		response.setContentLength((int)file.length());
-	
 		
 		String userAgent = request.getHeader("User-Agent");
 		
