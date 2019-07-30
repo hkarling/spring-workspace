@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,7 @@ public class BoardController {
      * 모든 게시물 가져오기
      */
     @RequestMapping("/list")
-    public void list(Model model) {
+    public void list(HttpSession session, Model model) {
 	List<ElectronicsDTO> list = boardService.selectAll();
 	model.addAttribute("list", list);
     }
@@ -37,14 +39,14 @@ public class BoardController {
      * 로그인 폼으로 가기
      */
     @RequestMapping("/write")
-    public void write() {
+    public void write(HttpSession session) {
     }
 
     /**
      * 등록하기
      */
     @RequestMapping("/insert")
-    public String insert(ElectronicsDTO dto) throws IllegalStateException, IOException {
+    public String insert(HttpSession session, ElectronicsDTO dto) throws IllegalStateException, IOException {
 	MultipartFile file = dto.getFile();
 	/* file이 첨부가 되었다면 */
 	if (file.getSize() > 0) {
@@ -63,7 +65,7 @@ public class BoardController {
      * @return
      */
     @RequestMapping("/read/{modelNum}")
-    public ModelAndView read(@PathVariable String modelNum) {
+    public ModelAndView read(HttpSession session, @PathVariable String modelNum) {
 	ElectronicsDTO dto = boardService.selectByModelNum(modelNum, true);
 	return new ModelAndView("/board/read", "elec", dto);
     }
@@ -74,7 +76,7 @@ public class BoardController {
      * @return
      */
     @RequestMapping("/down/{fname:.+}")
-    public ModelAndView down(@PathVariable String fname) {
+    public ModelAndView down(HttpSession session, @PathVariable String fname) {
 	
 	File file = new File(path + "/" + fname);
 	return new ModelAndView("downloadView", "fname", file);
@@ -86,7 +88,7 @@ public class BoardController {
      * @return
      */
     @RequestMapping("/updateForm")
-    public ModelAndView update(String modelNum) {
+    public ModelAndView update(HttpSession session, String modelNum) {
 	ElectronicsDTO dto = boardService.selectByModelNum(modelNum, false);
 	return new ModelAndView("board/update", "elec", dto);
     }
@@ -95,7 +97,7 @@ public class BoardController {
      * 수정하기
      */
     @RequestMapping("/update")
-    public ModelAndView update(ElectronicsDTO dto) {
+    public ModelAndView update(HttpSession session, ElectronicsDTO dto) {
 	boardService.update(dto);
 	ElectronicsDTO elecDTO = boardService.selectByModelNum(dto.getModelNum(), false);
 	return new ModelAndView("/board/read", "elec", elecDTO);
@@ -105,7 +107,7 @@ public class BoardController {
      * 삭제하기
      */
     @RequestMapping("/delete")
-    public String delete(String modelNum, String password) {
+    public String delete(HttpSession session, String modelNum, String password) {
 	boardService.delete(modelNum, password);
 	return "redirect:/board/list";
     }
