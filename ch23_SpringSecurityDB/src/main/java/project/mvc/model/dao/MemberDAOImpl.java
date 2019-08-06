@@ -19,8 +19,7 @@ public class MemberDAOImpl implements MemberDAO {
 
     @Override
     public Member selectMemberById(String id) {
-	// TODO Auto-generated method stub
-	return null;
+	return session.selectOne("memberMapper.selectMemberById", id);
     }
 
 }

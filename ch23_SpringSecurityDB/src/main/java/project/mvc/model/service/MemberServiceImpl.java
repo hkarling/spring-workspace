@@ -3,6 +3,7 @@ package project.mvc.model.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.mvc.model.dao.AuthoritiesDAO;
@@ -36,6 +37,9 @@ public class MemberServiceImpl implements MemberService {
 	if (result == 0)
 	    throw new RuntimeException("멤버 권한 부여에 오류가 발생하였습니다.");
 
+	if(member.getUserType() == null)
+	    throw new RuntimeException("권한레벨을 설정하시오.");
+	
 	if (member.getUserType().equals("1")) {
 	    result = authoritiesDAO.insertAuthority(new Authority(member.getId(), RoleConstant.ROLE_ADMIN));
 	    if (result == 0)

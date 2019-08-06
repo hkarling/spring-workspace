@@ -21,8 +21,7 @@ public class AuthoritiesDAOImpl implements AuthoritiesDAO {
 
     @Override
     public List<Authority> selectAuthorityByUserName(String userName) {
-	// TODO Auto-generated method stub
-	return null;
+	return session.selectList("authoritiesMapper.selectAuthorityByUserName", userName);
     }
 
 }
