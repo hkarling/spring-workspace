@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- servlet-context.xml에서의 component-scan보다 filter가 더 먼저 만들어지기 때문에 여기서도 bean을 생성해줘야한다. -->
+	<context:component-scan base-package="project.mvc.model.security,project.mvc.model.dao" />
+	
+	<!-- PasswordEncoder의 구현 객체 중 하나인 BCryptPasswordEncoder를 생성한다. -->
+	<bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder" />
+	
+	<!-- 어떤 요청이 들어오면 spring Security filter가 가로채서 권한을 체크할건지를 설정 -->
+	<!-- use-expression=true 설정 : SqEL 을 사용할 수 있도록 설정 -->
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/member/main" access="isAuthenticated()" />
+		<security:intercept-url pattern="/admin/main" access="hasRole('ROLE_ADMIN')" />
+		<security:form-login
+			login-page="/loginForm"
+			login-processing-url="/login"
+			username-parameter="id"
+			password-parameter="password"
+			default-target-url="/"
+			authentication-failure-handler-ref="memberAuthenticationFailHandler" />
+		<security:logout
+			logout-url="member/logout"
+			invalidate-session="true"
+			delete-cookies="JSESSIONID"
+			logout-success-url="/" />
+	</security:http>
+	
+	<!--  -->
+	<security:authentication-manager>
+		<security:authentication-provider ref="memberAuthenticationProvider" />
+	</security:authentication-manager>
+</beans>

@@ -16,7 +16,7 @@
 		</c:if>
 	</c:if>
 	<!-- action="/j_spring_security_check" 예약어 -->
-	<form action="${pageContext.request.contextPath}/login" method="post">
+	<form action="${pageContext.request.contextPath}/loginCheck" method="post">
 		<label>아이디:</label><input type="text" name="userid"><br>
 		<!-- j_username -->
 		<label>비번:</label><input type="password" name="userpass"><br>
