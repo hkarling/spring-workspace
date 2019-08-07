@@ -22,20 +22,33 @@ public class MemberController {
 
     /**
      * 가입 폼으로 연결
-     **/
+     */
     @RequestMapping("/member/joinForm")
     public void joinForm() {
     }
 
     /**
      * 가입하기
-     **/
+     */
     @RequestMapping("/member/join")
     public String join(Member member) {
 	memberService.joinMember(member);
 	return "member/joinSuccess";
     }
 
+    /**
+     * 관리자 메인
+     */
+    @RequestMapping("/admin/main")
+    public void adminMain() {
+	
+    }
+    
+    @RequestMapping("/member/main")
+    public void memberMain() {
+	
+    }
+    
     @ExceptionHandler(RuntimeException.class)
     public ModelAndView error(RuntimeException ex) {
 	return new ModelAndView("error/errorMessage", "message", ex.getMessage());
