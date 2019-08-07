@@ -1,7 +1,12 @@
 package sample01;
 
 public class MessageBeanKorImpl implements MessageBean {
-    public void sayHello(String name) {
 
+    public MessageBeanKorImpl() {
+        System.out.println("MessageBeanKorImpl 생성자 호출.");
+    }
+
+    public void sayHello(String name) {
+        System.out.println(name + " 안녕.");
     }
 }
