@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="sample07.MemberVo" id="member1">
+		<property name="id" value="Yoon" />
+		<property name="name" value="희정" />
+		<property name="age" value="20" />
+	</bean>
+
+	<bean class="sample07.MemberVo" id="member2">
+		<property name="id" value="karl" />
+		<property name="name" value="안녕" />
+		<property name="age" value="20" />
+	</bean>	
+	<!-- 
+		autowire 속성: 자동으로 객체를 주입
+			1) byType : setXxx() 호출	.
+						type이 같은 객체를 찾아서 주입.
+						2개의 같은 타입이 존재하면 오류발생 -> 이럴때는 byName을 써야함
+			2) byName : setXxx() 호출.
+						id와 property이름을 같은 객체를 찾아서 주입
+						같은게 있으면 오류는 발생하지 않는다.(주입안됨)
+			3) constructor : 생성자 호출
+						동일한 객체가 한개 있을 때는 byType주입
+						동일한 객체가 여러개 있을때는 byNmae 주입한다.
+	 -->
+	<bean class="sample07.MemberController" id="controller" autowire="constructor"/>
+</beans>

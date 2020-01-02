@@ -22,7 +22,7 @@ public class SpringContainerMainApp {
          *    : 웹사이트를 구축할 때 사용하는 container
          */
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("sample01/applicationContext.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("sample01/applicationContext01.xml");
 
         MessageBean bean1 = context.getBean("kor", MessageBean.class);
         MessageBean bean2 = context.getBean("eng", MessageBean.class);
