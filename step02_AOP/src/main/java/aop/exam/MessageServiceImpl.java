@@ -13,7 +13,7 @@ public class MessageServiceImpl implements MessageService {
 			 * proxyServer를 구해서 proxy가 호출할 수 있도록 한다.
 			 */
 			
-			MessageService se = (MessageService)AopContext.currentProxy();
+			MessageService se = (MessageService) AopContext.currentProxy();
 			se.engHello("RJW...");
 			
 //			this.engHello("껒..");
