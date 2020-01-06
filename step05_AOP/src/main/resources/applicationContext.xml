@@ -6,14 +6,14 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<!-- 객체생성 -->
-	<bean class="kosta.test.audio.AudioImpl" id="target1" />
-	<bean class="kosta.test.tv.TvImpl" id="target2" />
-	<bean class="kosta.test.video.VideoImpl" id="target3" />
-	<bean class="kosta.test.advice.LogAdvice" id="advice" />
+	<bean class="hkarling.test.audio.AudioImpl" id="target1" />
+	<bean class="hkarling.test.tv.TvImpl" id="target2" />
+	<bean class="hkarling.test.video.VideoImpl" id="target3" />
+	<bean class="hkarling.test.advice.LogAdvice" id="advice" />
 	
 	<!-- aop설정 -->
 	<aop:config>
-		<aop:pointcut expression="execution(* kosta.test.*.*Impl.*(..))" id="pointCut"/>
+		<aop:pointcut expression="execution(* hkarling.test.*.*Impl.*(..))" id="pointCut"/>
 		<aop:aspect id="aspect" ref="advice">
 			<aop:around method="around" pointcut-ref="pointCut" />
 		</aop:aspect>
