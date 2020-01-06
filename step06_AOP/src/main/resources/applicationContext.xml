@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<!-- 객체생성 -->
-	<context:component-scan base-package="kosta" />
+	<context:component-scan base-package="io.hkarling" />
 	
 	<!-- aop설정 -->
 <!-- 	<aop:config>

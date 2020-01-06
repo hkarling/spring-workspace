@@ -1,11 +1,10 @@
-package kosta.test.audio;
+package io.hkarling.audio;
 
+import io.hkarling.service.Player;
 import org.springframework.stereotype.Component;
 
-import kosta.test.service.Player;
-
 @Component("target1")
-public class AudioImpl implements Player{
+public class AudioImpl implements Player {
 
 	public void start(int i) {
 		System.out.println("AudioImpl start(int i) 호출..");

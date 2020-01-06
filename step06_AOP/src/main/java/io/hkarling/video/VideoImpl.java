@@ -1,8 +1,7 @@
-package kosta.test.video;
+package io.hkarling.video;
 
+import io.hkarling.service.Player;
 import org.springframework.stereotype.Component;
-
-import kosta.test.service.Player;
 
 @Component("target3")
 public class VideoImpl implements Player {

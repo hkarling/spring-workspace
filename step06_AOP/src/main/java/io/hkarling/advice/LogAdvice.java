@@ -1,4 +1,4 @@
-package kosta.test.advice;
+package io.hkarling.advice;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -13,7 +13,7 @@ import org.springframework.util.StopWatch;
 public class LogAdvice {
     Log log = LogFactory.getLog(this.getClass());
 
-    @Around("execution(* kosta.test.*.*Impl.*(..))")
+    @Around("execution(* io.hkarling.*.*Impl.*(..))")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 	String methodName = joinPoint.getSignature().getName();
 	int args = joinPoint.getArgs().length;

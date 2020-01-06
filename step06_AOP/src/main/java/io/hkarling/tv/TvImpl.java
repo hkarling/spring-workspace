@@ -1,8 +1,7 @@
-package kosta.test.tv;
+package io.hkarling.tv;
 
+import io.hkarling.service.Player;
 import org.springframework.stereotype.Component;
-
-import kosta.test.service.Player;
 
 @Component("target2")
 public class TvImpl implements Player {

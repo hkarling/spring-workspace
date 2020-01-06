@@ -1,9 +1,8 @@
-package kosta.test;
+package io.hkarling;
 
+import io.hkarling.service.Player;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import kosta.test.service.Player;
 
 public class MainApp {
 

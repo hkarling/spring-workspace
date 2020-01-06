@@ -1,4 +1,4 @@
-package kosta.test.service;
+package io.hkarling.service;
 
 public interface Player {
 
