@@ -1,4 +1,4 @@
-package ch04_Log4j;
+package step04_Log4j;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
