@@ -1,4 +1,4 @@
-package project.mvc.controller;
+package io.hkarling.controller;
 
 /**
  * 사용자 요청에 해당하는 Controller를 찾아주는 객체

@@ -1,4 +1,4 @@
-package project.mvc.controller;
+package io.hkarling.controller;
 
 public class ModelAndView {
 	private String path;
